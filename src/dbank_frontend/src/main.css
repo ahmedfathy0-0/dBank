@@ -1,6 +1,20 @@
+/* Color Palette */
+:root {
+  --background-color: #f0f2f5; /* Light gray/blue background */
+  --primary-color: #004b8d; /* Dark blue (Trust & Stability) */
+  --secondary-color: #23a455; /* Green (Money, Growth) */
+  --text-primary-color: #2c2c2c; /* Dark gray for text */
+  --text-secondary-color: #ffffff; /* White for contrast */
+  --border-color: #c0c5ce; /* Light gray border */
+  --highlight-color: #ffcb05; /* Gold accent for important buttons */
+  --divider-color: #004b8d; /* Same as primary color */
+  --button-hover-color: #006bbd; /* Lighter blue for button hover */
+}
+
+/* General Styles */
 html,
 body {
-  background-color: #211F2B;
+  background-color: var(--background-color);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,14 +27,14 @@ h2 {
 }
 
 h1 {
-  color: white;
+  color: var(--text-primary-color);
   font-size: 16px;
   font-weight: 500;
   margin-top: 10px;
 }
 
 h2 {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5); /* Light black for subtle headings */
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 10px;
@@ -36,9 +50,10 @@ form {
   width: 100px;
   height: 3px;
   margin: 20px auto;
-  background-color: #617BFF;
+  background-color: var(--divider-color);
 }
 
+/* Input Styles */
 input,
 textarea {
   position: relative;
@@ -46,11 +61,11 @@ textarea {
   display: block;
   margin: 0;
   border-radius: 7px;
-  border: 2px white solid;
-  background-color: white;
+  border: 2px var(--border-color) solid;
+  background-color: var(--text-secondary-color);
   padding: 10px 20px;
   width: 100%;
-  color: #1E1C29;
+  color: var(--text-primary-color);
   margin-bottom: 20px;
   box-sizing: border-box;
   transition: all 0.2s;
@@ -59,11 +74,12 @@ textarea {
 input:focus,
 textarea:focus {
   outline: none;
-  border: 2px #617BFF solid;
+  border: 2px var(--primary-color) solid;
 }
 
+/* Container */
 .container {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.85);
   width: 300px;
   margin: 0 auto;
   border-radius: 14px;
@@ -71,6 +87,7 @@ textarea:focus {
   margin-top: 50px;
 }
 
+/* Input Specific Styles */
 input[name="amount"] {
   font-size: 20px;
   font-weight: 600;
@@ -82,6 +99,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+/* Submit Button */
 #submit-btn {
   display: block;
   text-decoration: none;
@@ -90,21 +108,21 @@ input[type=number]::-webkit-outer-spin-button {
   cursor: pointer;
   font-size: 20px;
   font-weight: 600;
-  border: 2px #617BFF solid;
-  color: white;
-  background-color: #617BFF;
+  border: 2px var(--primary-color) solid;
+  color: var(--text-secondary-color);
+  background-color: var(--primary-color);
   padding: 15px;
   transition: all 0.2s;
 }
 
 #submit-btn:hover {
-  border: 2px #8095FF solid;
-  background-color: #8095FF;
+  border: 2px var(--button-hover-color) solid;
+  background-color: var(--button-hover-color);
 }
 
 #submit-btn:disabled {
-  border: 2px rgba(255, 255, 255, 0.1) solid;
-  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px rgba(0, 0, 0, 0.1) solid;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 textarea[name="address"] {

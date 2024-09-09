@@ -5,6 +5,7 @@ import './main.css';
 
 const App = () => {
   const [currentValue, setCurrentValue] = useState(0);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const fetchBalance = async () => {
     const balance = await dbank_backend.checkBalance();
@@ -17,7 +18,7 @@ const App = () => {
   function  handleClick(){
     let topUp = document.getElementById('input-amount').value;
     let withdraw = document.getElementById('withdrawal-amount').value;
-    if (topUp === "" && withdraw === "") {
+    if (topUp === "0" && withdraw === "0") {
       alert("Please enter a value to top up or withdraw");
       return;
     }
@@ -27,21 +28,23 @@ const App = () => {
     if(withdraw == ""){
       withdraw = 0;
     }
-
+    setIsUpdating(true);
     const finallingTransaction = async () => {
       await dbank_backend.topUp(parseFloat(topUp));
       await dbank_backend.withdraw(parseFloat(withdraw));
+      setIsUpdating(false);
       console.log("Transaction finalised");
       fetchBalance();
       document.getElementById('input-amount').value = 0;
       document.getElementById('withdrawal-amount').value = 0;  
     }
     finallingTransaction();
+    
   }
 
   return (
     <div className="container">
-      <img src="/dbank_logo.png" alt="DBank logo" width="100" />
+      <img src="/dbank_logo.png" alt="DBank logo" width="200" />
       <h1>
         Current Balance: $<span id="value">{currentValue}</span>
       </h1>
@@ -70,6 +73,7 @@ const App = () => {
           type="submit"
           value="Finalise Transaction"
           onClick ={handleClick}
+          disabled={isUpdating}
         />
       </form>
     </div>
